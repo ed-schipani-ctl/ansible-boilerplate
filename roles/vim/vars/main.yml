@@ -5,4 +5,3 @@ vimrc: "{{ ansible_env.HOME }}/.vimrc"
 install_packages:
   - vim-enhanced
   - git
-  - fzf
