@@ -7,3 +7,7 @@
     - name: Configure Vim using role
       import_role:
         name: vim
+    - name: Obtain the ACL for a specific file
+      ansible.posix.acl:
+        path: /etc/redhat-release
+      register: acl_info
