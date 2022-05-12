@@ -7,6 +7,13 @@
     - name: Configure Vim using role
       import_role:
         name: vim
+
+- name: ACL Test
+  hosts: r7fleet
+  gather_facts: yes
+  become: no
+
+  tasks:
     - name: Obtain the ACL for a specific file
       ansible.posix.acl:
         path: /etc/redhat-release
