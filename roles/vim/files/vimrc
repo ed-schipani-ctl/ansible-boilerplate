@@ -1,4 +1,4 @@
 syntax on
 set ts=4
-set ai:w
+set ai
 
