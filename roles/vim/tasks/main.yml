@@ -19,11 +19,6 @@
     - "{{ vim_dir }}/autoload"
     - "{{ vim_dir }}/bundle"
 
-- name: Ensure Pathogen is in place
-  get_url:
-    dest: "{{ vim_dir }}/autoload/pathogen.vim"
-    url: https://tpo.pe/pathogen.vim
-
 - name: Deploy plugins
   git:
     dest: "{{ vim_dir }}/bundle/{{ item.name }}"
