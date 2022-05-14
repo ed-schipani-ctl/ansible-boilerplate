@@ -1,7 +1,2 @@
 ---
-# vars file for vim
-vim_dir: "{{ ansible_env.HOME }}/.vim"
-vimrc: "{{ ansible_env.HOME }}/.vimrc"
-install_packages:
-  - vim-enhanced
-  - git
+# vars file for pgpool2
