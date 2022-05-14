@@ -1,0 +1,14 @@
+- name: Configure SL7 Lab proxy on Ubuntu
+  hosts: "{{ target | default('all') }}"
+  gather_facts: yes
+  become: no
+
+  tasks:
+  - name: Add a line to a file if the file does not exist, without passing regexp
+    ansible.builtin.lineinfile:
+      path: /etc/environment
+      line: "{{ item }}"
+      create: yes
+    loop:
+      - 'http_proxy="http://proxy.savvis.lab:8080"'
+      - 'https_proxy="http://proxy.savvis.lab:8080"'
