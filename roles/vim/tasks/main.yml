@@ -4,7 +4,6 @@
   package:
     name: "{{ install_packages }}"
     state: present
-  become: yes
   tags:
     - install_packages
 
@@ -29,8 +28,8 @@
 - name: Template a file to /etc/testfile
   ansible.builtin.template:
     src: testfile.j2
-    dest: /etc/testfile
+    dest: /etc/test{{ item }}
     owner: root
     group: root
     mode: '0600'
-    
+  loop: "{{ template_list }}"  
