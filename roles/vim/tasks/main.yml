@@ -25,3 +25,12 @@
     dest: "{{ vimrc }}"
     backup: yes
     mode: 0640
+
+- name: Template a file to /etc/testfile
+  ansible.builtin.template:
+    src: testfile.j2
+    dest: /etc/testfile
+    owner: root
+    group: root
+    mode: '0600'
+    
