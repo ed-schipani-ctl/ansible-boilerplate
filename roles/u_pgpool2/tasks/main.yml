@@ -26,8 +26,10 @@
     backup: yes
     mode: 0640
     group: postgres
+  notify:
+    - Make sure a service unit is restarted
 
-- name: Make sure a service unit is running
+- name: Make sure a service unit is enabled
   ansible.builtin.systemd:
     state: started
     name: pgpool2
