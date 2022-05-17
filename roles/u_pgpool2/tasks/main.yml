@@ -32,5 +32,4 @@
     backup: yes
     mode: 0640
     group: postgres
-  notify:
-    - Make sure a service unit is reloaded
+  notify: "reload service"

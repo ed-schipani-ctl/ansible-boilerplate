@@ -4,3 +4,5 @@
   ansible.builtin.systemd:
     state: reloaded
     name: pgpool2
+    enabled: yes
+  listen: "reload service"
