@@ -19,17 +19,25 @@
   loop:
     - "/var/log/pgpool/oiddir"
 
-- name: Make sure a service unit is enabled
+- name: Make sure service units are enabled
   ansible.builtin.systemd:
     state: started
-    name: pgpool2
+    name: [pgpool2, postgresql]
     enabled: yes
 
-- name: Deploy high performance config
+- name: Update postgres max conns to support pgpool2
+  ansible.builtin.lineinfile:
+    path: /etc/postgresql/12/main/postgresql.conf
+    regexp: '^max_connections ='
+    line: max_connections = 1000
+    backup: yes
+  notify: "reload postgres service"
+
+- name: Deploy pgpool2 high performance config
   ansible.builtin.copy:
     src: pgpool.conf
     dest: "/etc/pgpool2/pgpool.conf"
     backup: yes
     mode: 0640
     group: postgres
-  notify: "reload service"
+  notify: "reload pgpool service"
