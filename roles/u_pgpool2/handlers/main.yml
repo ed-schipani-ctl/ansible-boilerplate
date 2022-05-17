@@ -1,17 +1,14 @@
 ---
 # handlers file for pgpool2
-- name: Make sure a service unit is reloaded
+- name: Make sure pgpool2 service unit is reloaded
   ansible.builtin.systemd:
     state: reloaded
     name: pgpool2
-    enabled: yes
   listen: "reload pgpool service"
 
-- name: Make sure a service unit is reloaded
+- name: Make sure postgresql service unit is reloaded
   ansible.builtin.systemd:
     state: reloaded
     name: postgresql
-    enabled: yes
   listen: "reload postgres service"
 
-  
