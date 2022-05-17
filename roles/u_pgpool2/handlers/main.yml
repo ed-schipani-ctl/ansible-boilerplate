@@ -1,6 +1,6 @@
 ---
 # handlers file for pgpool2
-- name: Make sure a service unit is restarted
+- name: Make sure a service unit is reloaded
   ansible.builtin.systemd:
-    state: restarted
+    state: reloaded
     name: pgpool2
