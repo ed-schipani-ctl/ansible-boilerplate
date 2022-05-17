@@ -19,13 +19,13 @@
   loop:
     - "/var/log/pgpool/oiddir"
 
-- name: Make sure service units are enabled
-  ansible.builtin.systemd:
-    state: started
-    name:
-      - postgresql
-      - pgpool2
-    enabled: yes
+# - name: Make sure service units are enabled
+#   ansible.builtin.systemd:
+#     state: started
+#     name:
+#       - postgresql
+#       - pgpool2
+#     enabled: yes
 
 - name: Update postgres max conns to support pgpool2
   ansible.builtin.lineinfile:
