@@ -22,7 +22,9 @@
 - name: Make sure service units are enabled
   ansible.builtin.systemd:
     state: started
-    name: [pgpool2, postgresql]
+    name:
+      - postgresql
+      - pgpool2
     enabled: yes
 
 - name: Update postgres max conns to support pgpool2
