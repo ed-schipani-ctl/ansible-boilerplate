@@ -19,6 +19,12 @@
   loop:
     - "/var/log/pgpool/oiddir"
 
+- name: Make sure a service unit is enabled
+  ansible.builtin.systemd:
+    state: started
+    name: pgpool2
+    enabled: yes
+
 - name: Deploy high performance config
   ansible.builtin.copy:
     src: pgpool.conf
@@ -28,9 +34,3 @@
     group: postgres
   notify:
     - Make sure a service unit is restarted
-
-- name: Make sure a service unit is enabled
-  ansible.builtin.systemd:
-    state: started
-    name: pgpool2
-    enabled: yes
