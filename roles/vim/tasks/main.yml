@@ -33,3 +33,13 @@
     group: root
     mode: '0600'
   loop: "{{ template_list }}"  
+
+
+- name: Copy vaulted/encrypted file
+  copy:
+    src: test.key
+    dest: /etc/test.key
+    decrypt: yes
+    mode: 0600
+    owner: root
+    group: root
