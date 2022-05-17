@@ -1,0 +1,9 @@
+- name: Config pgpool2 for MAAS acceleration on Ubuntu
+  hosts: "{{ target | default('db') }}"
+  gather_facts: yes
+  become: no
+
+  tasks:
+    - name: Configure using role
+      import_role:
+        name: u_pgpool2

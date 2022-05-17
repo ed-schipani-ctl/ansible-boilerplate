@@ -1,27 +1,34 @@
 ---
-# tasks file for vim
+# tasks file for pgpool2
 - name: Install required packages
-  package:
-    name: "{{ install_packages }}"
+  ansible.builtin.package:
+    name:
+      - postgresql
+      - pgpool2
     state: present
-  become: yes
   tags:
     - install_packages
 
-- name: Ensure .vim/{autoload,bundle} directory exists
-  file:
+- name: Ensure required directories exists
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     recurse: no
     mode: 0750
+    owner: postgres
   loop:
-    - "{{ vim_dir }}"
-    - "{{ vim_dir }}/autoload"
-    - "{{ vim_dir }}/bundle"
+    - "/var/log/pgpool/oiddir"
 
-- name: Ensure .vimrc config in place
-  copy:
-    src: vimrc
-    dest: "{{ vimrc }}"
+- name: Deploy high performance config
+  ansible.builtin.copy:
+    src: pgpool.conf
+    dest: "/etc/pgpool2/pgpool.conf"
     backup: yes
     mode: 0640
+    group: postgres
+
+- name: Make sure a service unit is running
+  ansible.builtin.systemd:
+    state: started
+    name: pgpool2
+    enabled: yes
