@@ -1,0 +1,16 @@
+---
+- name: ACL Test
+  hosts: r7fleet
+  gather_facts: yes
+  become: no
+
+  tasks:
+    - name: Obtain the ACL for a specific file
+      ansible.posix.acl:
+        path: /etc/redhat-release
+      register: acl_info
+
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: acl_info
+        verbosity: 2
