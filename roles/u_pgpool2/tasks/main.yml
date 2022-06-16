@@ -14,7 +14,7 @@
     path: "{{ item }}"
     state: directory
     recurse: no
-    mode: 0750
+    mode: 0755
     owner: postgres
   loop:
     - "/var/log/pgpool/oiddir"
