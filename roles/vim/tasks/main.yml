@@ -28,7 +28,7 @@
 - name: Template a file to /etc/testfile
   ansible.builtin.template:
     src: templates/testfile.j2
-    dest: /etc/testfile{{ item }}
+    dest: /root/testfile{{ item }}
     owner: root
     group: root
     mode: '0600'
@@ -38,7 +38,7 @@
 - name: Copy vaulted/encrypted file
   copy:
     src: test.key
-    dest: /etc/test.key
+    dest: /root/test.key
     decrypt: yes
     mode: 0600
     owner: root
