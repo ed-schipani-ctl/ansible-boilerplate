@@ -1,6 +1,6 @@
 ---
 - name: ACL Test
-  hosts: r7fleet
+  hosts: rhel9
   gather_facts: yes
   become: no
 
