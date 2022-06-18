@@ -1,6 +1,4 @@
-# This displays all the variable information for a host that is defined in the inventory file.
 - name: Display all variables/facts known for a host
   debug:
     var: hostvars[inventory_hostname]
-    #var: hostvars
     verbosity: 4
