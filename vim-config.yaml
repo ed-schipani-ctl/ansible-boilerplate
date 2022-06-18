@@ -1,5 +1,5 @@
 - name: Config Vim with plugins backed by role
-  hosts: "{{ target_hosts | default('all') }}"
+  hosts: "{{ target | default('all') }}"
   gather_facts: yes
   become: no
 
