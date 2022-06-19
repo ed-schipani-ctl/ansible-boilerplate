@@ -37,6 +37,13 @@
       ansible.builtin.shell: cat /etc/redhat-release
       register: release
 
-    - name: Use the variable in conditional statement
+    - name: Use the variable in conditional statement, then register this task's output
       ansible.builtin.shell: echo "found a rhel 8"
       when: release.stdout.find('8.') != -1
+      register: match
+
+    - name: show the match
+      when: match is defined
+      debug:
+        var: match
+        
