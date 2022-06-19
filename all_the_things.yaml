@@ -32,3 +32,11 @@
       ansible.builtin.fail: msg="Bailing out. This play requires 'bar'"
       when: bar is undefined
       ignore_errors: true
+
+    - name: Register a variable
+      ansible.builtin.shell: cat /etc/redhat-release
+      register: release
+
+    - name: Use the variable in conditional statement
+      ansible.builtin.shell: echo "found a rhel 8"
+      when: release.stdout.find('8.') != -1
