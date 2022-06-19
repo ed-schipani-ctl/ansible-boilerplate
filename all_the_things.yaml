@@ -29,5 +29,6 @@
       when: foo is defined
 
     - name: Fail if "bar" is undefined
-      ansible.builtin.fail: msg="Bailing out. This play requires 'bar'"
+      ansible.builtin.fail: msg="Bailing out. This play requires 'bar'" extra="hello"
       when: bar is undefined
+      ignore_errors: true
