@@ -1,6 +1,7 @@
 ---
 - name: all the things
   hosts: "{{ target | default('all') }}"
+  remote_user: red
   
   tasks:
     - name: display all variables/facts known for a host
