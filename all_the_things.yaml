@@ -12,10 +12,14 @@
       debug:
         var: hostvars
 
-    - name: display a fact via hostvars, applicable to this host only
+    - name: display a fact via hostvars, for this host
       debug:
-        var: hostvars[inventory_hostname]['ansible_ssh_user']
+        var: hostvars[inventory_hostname]['default_ipv4']['macaddress']
 
-    - name: display locally scoped variable
+    - name: display locally scoped variable, group_names
       debug:
         var: group_names
+
+    - name: display locally scoped variable, conversion test
+      debug:
+        var: default_ipv4.macaddress
