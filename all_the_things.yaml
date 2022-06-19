@@ -5,8 +5,10 @@
   
   tasks:
     - name: display all hostvars, for all hosts, when a variable defined against host matches
-      when: testvar_host == 'ic4lights'
-      ignore_errors: true
+      when:
+        - testvar_host is defined
+        - testvar_host == 'ic4lights'
+      #ignore_errors: true
       debug:
         var: hostvars
 
