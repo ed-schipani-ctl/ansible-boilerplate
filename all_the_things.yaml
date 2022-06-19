@@ -1,9 +1,9 @@
 ---
 - name: all the things
   hosts: "{{ target | default('all') }}"
+  gather_facts: no
 
   tasks:
     - name: display all variables/facts known for a host
       debug:
-        var: hostvars[inventory_hostname]
-        verbosity: 4
+        var: hostvars
