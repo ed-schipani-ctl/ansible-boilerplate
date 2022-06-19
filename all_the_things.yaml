@@ -8,6 +8,11 @@
       debug:
         var: hostvars
 
-    - name: display a fact, applicable to this host only
+    - name: display a fact via hostvars, applicable to this host only
       debug:
         var: hostvars[inventory_hostname]['ansible_ssh_user']
+
+    - name: display locally scoped variable
+      debug:
+        var: ansible_ssh_user
+        
