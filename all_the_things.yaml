@@ -3,6 +3,7 @@
   hosts: "{{ target | default('all') }}"
   gather_facts: yes
   become: yes
+  become_method: sudo
 
   tasks:
     - name: display all variables/facts known for a host
