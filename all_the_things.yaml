@@ -1,7 +1,8 @@
 ---
 - name: all the things
   hosts: "{{ target | default('all') }}"
-  gather_facts: no
+  gather_facts: yes
+  become: yes
 
   tasks:
     - name: display all variables/facts known for a host
