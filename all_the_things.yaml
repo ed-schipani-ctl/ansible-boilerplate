@@ -22,4 +22,4 @@
 
     - name: display locally scoped variable, conversion test
       debug:
-        var: default_ipv4.macaddress
+        var: default_ipv4['macaddress']
