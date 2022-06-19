@@ -4,6 +4,10 @@
   remote_user: red
   
   tasks:
-    - name: display all variables/facts known for a host
+    - name: display all hostvars, for all hosts
       debug:
         var: hostvars
+
+    - name: display a fact, applicable to this host only
+      debug:
+        var: hostvars[inventory_hostname]['ansible_ssh_user']
